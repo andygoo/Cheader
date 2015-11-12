@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Change Request Header Setting</title>
+<style>
+#main {padding: 5px 8px 3px 8px;width: 400px;height: 200px;}
+h3 {color: #2828FF;display: inline}
+hr {height:5px;border:none;border-top:3px double #0072E3;}
+</style>
+<script src="./js/jquery-1.8.3.min.js"></script>
+<script src="./js/popup.js"></script>
+</head>
+<body>
+<div id="main">
+<h3>Change Request Header Setting</h3><hr />
+<table>
+<tr>
+	<td>X-Forward-For:</td>
+	<td><input type="text" class="input" id="xForward" name="XForward" style="width:120px" /></td>
+	<td><input type="button" id="randomip" value="换一个"></td>
+	<td><input type="checkbox" id="israndomip">随机</td>
+</tr>
+<tr>
+	<td>X-Requested-With:</td>
+	<td><input type="checkbox" id="needAjax">ajax</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
