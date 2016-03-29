@@ -1,9 +1,14 @@
 $(function() {
 	$('#xForward').val(localStorage['xForward']);
+	$('#referer').val(localStorage['referer']);
 	
 	var israndomip = localStorage['israndomip']=='true' ? true : false;
 	$('#israndomip').prop('checked', israndomip);
 	$('#xForward, #randomip').prop('disabled', israndomip);
+	
+	var targeturl = localStorage['targeturl']=='true' ? true : false;
+	$('#targeturl').prop('checked', targeturl);
+	$('#referer').prop('disabled', targeturl);
 	
 	var needAjax = localStorage['needAjax']=='true' ? true : false;
 	$('#needAjax').prop('checked', needAjax);
@@ -19,6 +24,12 @@ $(function() {
 		$('#xForward, #randomip').prop('disabled', checked);
 		localStorage['israndomip'] = checked;
 	});
+		
+	$('#targeturl').change(function() {
+		var checked = $(this).prop('checked');
+		$('#referer').prop('disabled', checked);
+		localStorage['targeturl'] = checked;
+	});
 	
 	$('#needAjax').change(function() {
 		var checked = $(this).prop('checked');
@@ -27,6 +38,10 @@ $(function() {
 	
 	$('#xForward').blur(function(){
 		localStorage['xForward'] = $('#xForward').val();
+	});
+	
+	$('#referer').blur(function() {
+		localStorage['referer'] = $('#referer').val();
 	});
 });
 

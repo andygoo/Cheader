@@ -3,7 +3,7 @@
 <head>
 <title>Change Request Header Setting</title>
 <style>
-#main {padding: 5px 8px 3px 8px;width: 400px;height: 200px;}
+#main {padding: 5px 8px 3px 8px;width: 440px;height: 200px;}
 h3 {color: #2828FF;display: inline}
 hr {height:5px;border:none;border-top:3px double #0072E3;}
 </style>
@@ -17,19 +17,24 @@ hr {height:5px;border:none;border-top:3px double #0072E3;}
 <tr>
 	<td>X-Forward-For:</td>
 	<td>
-	<input type="text" class="input" id="xForward" name="XForward" list="ips" style="width:120px" />
-	<datalist id="ips">
-		<option value="103.19.65.58">
-		<option value="222.175.96.36">
-		<option value="218.28.234.213">
-	</datalist>
+		<input type="text" class="input" id="xForward" name="XForward" list="ips" style="width:120px">
+		<datalist id="ips">
+			<option value="103.19.65.58">
+			<option value="222.175.96.36">
+			<option value="218.28.234.213">
+		</datalist>
 	</td>
 	<td><input type="button" id="randomip" value="换一个"></td>
-	<td><input type="checkbox" id="israndomip">随机</td>
+	<td><input type="checkbox" id="israndomip">Random IP</td>
+</tr>
+<tr>
+	<td>Referer:</td>
+	<td colspan="2"><input type="text" id="referer"></td>
+	<td><input type="checkbox" id="targeturl">Disabled<!--Target URL--></td>
 </tr>
 <tr>
 	<td>X-Requested-With:</td>
-	<td><input type="checkbox" id="needAjax">ajax</td>
+	<td><input type="checkbox" id="needAjax">Ajax</td>
 </tr>
 </table>
 </div>

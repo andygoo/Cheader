@@ -39,9 +39,12 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function(details) {
 	
 	var isxForward = false;
 	var isAjax = false;
+	var isReferer = false;
 	var needAjax = localStorage['needAjax']=='true' ? true : false;
+	var istargeturl = localStorage['targeturl']=='true' ? true : false;
 	
 	var ip = localStorage['israndomip']=='true' ? rand_ip() : localStorage['xForward'];
+	var referer = localStorage['targeturl']=='true' ? url : localStorage['referer'];
 	for (var i = 0; i < headers.length; ++i) {
 		if (headers[i].name==='X-Forward-For') {
 			headers[i].value = ip;
@@ -50,12 +53,17 @@ chrome.webRequest.onBeforeSendHeaders.addListener(function(details) {
 		if (headers[i].name==='X-Requested-With') {
 			isAjax = true;
 		}
-		//if (headers[i].name === 'Referer') {
-			//headers[i].value = url;
-		//}
+		if (headers[i].name === 'Referer' && istargeturl == false) {
+			headers[i].value = referer;
+			isReferer = true;
+		}
 	}
+	
 	if(isxForward==false) {
 		headers.push({name:'X-Forwarded-For',value:ip});
+	}
+	if(isReferer==false && istargeturl==false) {
+		headers.push({name:'Referer',value:referer});
 	}
 	if(isAjax==false && needAjax==true) {
 		headers.push({name:'X-Requested-With',value:'XMLHttpRequest'});
